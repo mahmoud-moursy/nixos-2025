@@ -1,10 +1,11 @@
-{ ... }: {
-	users.mutableUsers = false;
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+{ ... }:
+{
+  users.mutableUsers = false;
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
-	imports = [
-		./root.nix
-		./moursy.nix
-	];
+  imports = [
+    ./root.nix
+    ./moursy.nix
+  ];
 }

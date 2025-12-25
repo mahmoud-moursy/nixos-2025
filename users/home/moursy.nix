@@ -1,4 +1,4 @@
-{ pkgs, impermanence, ... }:
+{ pkgs, ... }:
 {
   imports = [ ];
 
@@ -7,8 +7,33 @@
     zed-editor-fhs
     nixd
     nil
+    nixfmt-rfc-style
+    devenv
   ];
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
+  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-cosmic ];
+
   programs.firefox.enable = true;
+
+  programs.direnv.enable = true;
+  programs.zoxide.enable = true;
+
+  programs.bash.enable = true;
+  programs.fish.enable = true;
+
+  home.shell.enableFishIntegration = true;
+  home.shell.enableBashIntegration = true;
+
+  programs.nh.enable = true;
+  programs.nh.clean.enable = true;
+  programs.nh.clean.extraArgs = "--keep-since 4d";
+  programs.nh.flake = "path:/etc/nixos";
+
+  nix.settings.extra-substituters = [ "https://devenv.cachix.org" ];
+  nix.settings.extra-trusted-public-keys = [
+    "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+  ];
 
   home.stateVersion = "25.11";
 }

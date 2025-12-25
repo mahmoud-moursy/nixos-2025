@@ -1,16 +1,17 @@
-{ lib, ... }: {
-	boot.initrd.postMountCommands = lib.mkAfter ''
-    		zfs rollback -r zroot/local/root@blank
-  	'';
+{ lib, ... }:
+{
+  boot.initrd.postMountCommands = lib.mkAfter ''
+      		zfs rollback -r zroot/local/root@blank
+    	'';
 
-	fileSystems."/persist" = {
-		device = "zroot/local/persist";
-		fsType = "zfs";
-		neededForBoot = true;
-	};
+  fileSystems."/persist" = {
+    device = "zroot/local/persist";
+    fsType = "zfs";
+    neededForBoot = true;
+  };
 
-	environment.persistence."/persist" = {
-    enable = true;  # NB: Defaults to true, not needed
+  environment.persistence."/persist" = {
+    enable = true; # NB: Defaults to true, not needed
     hideMounts = true;
     directories = [
       "/etc/nixos"
@@ -19,11 +20,21 @@
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
-      { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+      {
+        directory = "/var/lib/colord";
+        user = "colord";
+        group = "colord";
+        mode = "u=rwx,g=rx,o=";
+      }
     ];
     files = [
       "/etc/machine-id"
-      { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
+      {
+        file = "/var/keys/secret_file";
+        parentDirectory = {
+          mode = "u=rwx,g=,o=";
+        };
+      }
     ];
     users.moursy = {
       directories = [
@@ -32,15 +43,27 @@
         "Pictures"
         "Documents"
         "Videos"
-        { directory = ".gnupg"; mode = "0700"; }
-        { directory = ".ssh"; mode = "0700"; }
-        { directory = ".nixops"; mode = "0700"; }
-        { directory = ".local/share/keyrings"; mode = "0700"; }
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
+        {
+          directory = ".nixops";
+          mode = "0700";
+        }
+        {
+          directory = ".local/share/keyrings";
+          mode = "0700";
+        }
         ".local/share/direnv"
       ];
       files = [
         ".screenrc"
       ];
     };
-  };  	
+  };
 }

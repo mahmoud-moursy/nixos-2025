@@ -2,13 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   nix.package = pkgs.lixPackageSets.stable.lix;
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -37,13 +44,11 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # System76's scheduler can be more performant with COSMIC
   services.system76-scheduler.enable = true;
   # Enable the COSMIC Environment.
   services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -56,19 +61,26 @@
   # services.pulseaudio.enable = true;
   # OR
   services.pipewire = {
-     enable = true;
-     pulse.enable = true;
-     jack.enable = true;
-     alsa.enable = true;
-     extraConfig.pipewire = {
-        context.properties = {
-          #defautlt.allowed-rates = [ 192000 48000 44100 ];
-          defautlt.allowed-rates = [ 384000 192000 96000 48000 44100 ];
-          default.clock.quantum = 32;
-          default.clock.min-quantum = 32;
-          default.clock.max-quantum = 32;
-        };
+    enable = true;
+    pulse.enable = true;
+    jack.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    extraConfig.pipewire = {
+      context.properties = {
+        #defautlt.allowed-rates = [ 192000 48000 44100 ];
+        defautlt.allowed-rates = [
+          384000
+          192000
+          96000
+          48000
+          44100
+        ];
+        default.clock.quantum = 32;
+        default.clock.min-quantum = 32;
+        default.clock.max-quantum = 32;
       };
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -100,18 +112,22 @@
 
   # List services that you want to enable:
 
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
+  security.tpm2.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.hostKeys = [
-  	{
-  		path = "/persist/ssh/ssh_host_ed25519_key";
-  		type = "ed25519";
-  	}
-  	{
-  		path = "/persist/ssh/ssh_host_rsa_key";
-  		type = "rsa";
-  		bits = 4096;
-  	}
+    {
+      path = "/persist/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+    {
+      path = "/persist/ssh/ssh_host_rsa_key";
+      type = "rsa";
+      bits = 4096;
+    }
   ];
 
   # Open ports in the firewall.
@@ -145,4 +161,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
