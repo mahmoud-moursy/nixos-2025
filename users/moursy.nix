@@ -3,8 +3,12 @@
   users.users.moursy.hashedPasswordFile = "${passwords/moursy.secret}";
 
   users.users.moursy = {
+    description = "Mahmoud Moursy";
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     shell = pkgs.fish;
   };
 
