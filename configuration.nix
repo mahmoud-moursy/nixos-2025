@@ -24,16 +24,14 @@
   networking.hostName = "moursy-nixos"; # Define your hostname.
   networking.hostId = "c8a6a27e";
 
-  # Configure network connections interactively with nmcli or nmtui.
+  systemd.network.enable = true;
+  networking.useNetworkd = true;
   networking.networkmanager.enable = true;
+  
   networking.enableIPv6 = true;
-
-  # Disable NetworkManager's internal DNS resolution
-  networking.networkmanager.dns = "none";
-
-  # These options are unnecessary when managing DNS ourselves
-  networking.useDHCP = false;
-  networking.dhcpcd.enable = false;
+  networking.useDHCP = lib.mkDefault true;
+  networking.dhcpcd.enable = true;
+  networking.dhcpcd.IPv6rs = true;
   
   networking.nameservers = [
     "1.1.1.1"
@@ -41,7 +39,9 @@
     "2606:4700:4700::1111"
     "2606:4700:4700::1001"
   ];
-
+  
+  virtualisation.docker.enable = true;
+  
   # Set your time zone.
   time.timeZone = "Asia/Dubai";
 
@@ -58,6 +58,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.flatpak.enable = true;
 
   # System76's scheduler can be more performant with COSMIC
   services.system76-scheduler.enable = true;

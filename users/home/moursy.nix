@@ -1,23 +1,38 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [ ];
 
-  home.packages = with pkgs; [
-    git
-    zed-editor-fhs
-    nixd
-    nil
-    nixfmt-rfc-style
-    devenv
-    keepassxc
+  home.packages = [
+    pkgs.git
+    pkgs.zed-editor-fhs
+    pkgs.nixd
+    pkgs.nil
+    pkgs.nixfmt-rfc-style
+    pkgs.devenv
+    pkgs.keepassxc
+    
+    pkgs.gnome-system-monitor
+    
+    pkgs.thunderbird
+    
+    pkgs.noto-fonts
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-cjk-serif
+    pkgs.noto-fonts-color-emoji
+    pkgs.unifont
+    
+    inputs.polypane.packages.x86_64-linux.polypane
   ];
+  
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
-  xdg.portal.configPackages = [ pkgs.xdg-desktop-portal-cosmic ];
+  xdg.portal.config.common.default = "*";
+  
+  fonts.fontconfig.enable = true;
 
   programs.git.enable = true;
   programs.git = {
-    extraConfig = {
+    settings = {
       user.email = "bageliq@protonmail.com";
       user.name = "Mahmoud Moursy";
       init.defaultBranch = "main";

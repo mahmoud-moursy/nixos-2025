@@ -1,4 +1,4 @@
-{ ... }:
+all@{ inputs, ... }:
 {
-  users.users.root.hashedPasswordFile = "${passwords/root.secret}";
+  users.users.root.hashedPasswordFile = "${inputs.user-passwords}/root.secret";
 }
