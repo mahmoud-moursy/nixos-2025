@@ -23,10 +23,6 @@
       url = "path:users/passwords";
       flake = false;
     };
-    user-passwords = {
-      url = "path:users/passwords";
-      flake = false;
-    };
   };
 
   outputs =
