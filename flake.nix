@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-mineral = {
-      url = "github:cynicsketch/nix-mineral";
+    user-passwords = {
+      url = "path:users/passwords";
       flake = false;
     };
     user-passwords = {
@@ -52,8 +52,6 @@
 
             home-manager.nixosModules.home-manager
             ./users
-
-            "${inputs.nix-mineral}/nix-mineral.nix"
 
             inputs.impermanence.nixosModules.impermanence
             ./impermanence.nix
