@@ -23,25 +23,11 @@
 
   networking.hostName = "moursy-nixos"; # Define your hostname.
   networking.hostId = "c8a6a27e";
-
-  systemd.network.enable = true;
-  networking.useNetworkd = true;
   networking.networkmanager.enable = true;
   
-  networking.enableIPv6 = true;
-  networking.useDHCP = lib.mkDefault true;
-  networking.dhcpcd.enable = true;
-  networking.dhcpcd.IPv6rs = true;
-  
-  networking.nameservers = [
-    "1.1.1.1"
-    "1.0.0.1"
-    "2606:4700:4700::1111"
-    "2606:4700:4700::1001"
-  ];
-  
+  virtualisation.containers.enable = true;
   virtualisation.docker.enable = true;
-  
+
   # Set your time zone.
   time.timeZone = "Asia/Dubai";
 
@@ -58,6 +44,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  xdg.portal.enable = true;
   services.flatpak.enable = true;
 
   # System76's scheduler can be more performant with COSMIC

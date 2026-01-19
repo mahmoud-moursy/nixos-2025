@@ -9,7 +9,7 @@ all@{ pkgs, inputs, ... }:
       "wheel"
       "networkmanager"
       "docker"
-    ];
+    ]; 
     shell = pkgs.fish;
   };
 

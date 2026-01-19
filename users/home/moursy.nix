@@ -5,6 +5,8 @@
   home.packages = [
     pkgs.git
     pkgs.zed-editor-fhs
+    pkgs.jetbrains.webstorm
+    pkgs.jetbrains.datagrip
     pkgs.nixd
     pkgs.nil
     pkgs.nixfmt-rfc-style
@@ -25,7 +27,7 @@
   ];
   
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic pkgs.xdg-dbus-proxy ];
   xdg.portal.config.common.default = "*";
   
   fonts.fontconfig.enable = true;

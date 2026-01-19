@@ -39,6 +39,7 @@
           system = "x86_64-linux";
           modules = [
             ./configuration.nix
+            ./software/steam.nix
 
             inputs.nixos-hardware.nixosModules.asus-rog-strix-x570e
             inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
