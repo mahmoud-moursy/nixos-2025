@@ -3,21 +3,24 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
     nur.url = "github:nix-community/NUR";
-    polypane.url = "github:mahmoud-moursy/polypane-flake";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
+    
+    polypane.url = "github:mahmoud-moursy/polypane-flake"; 
+    polypane.inputs.nixpkgs.follows = "nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    disko.url = "github:nix-community/disko/latest";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     user-passwords = {
       url = "path:users/passwords";
@@ -46,6 +49,9 @@
             inputs.nixos-hardware.nixosModules.common-pc-ssd
             ./hardware/nvidia.nix
             ./hardware/boot-configuration.nix
+            
+            inputs.lanzaboote.nixosModules.lanzaboote
+            ./hardware/lanzaboote.nix
 
             home-manager.nixosModules.home-manager
             ./users

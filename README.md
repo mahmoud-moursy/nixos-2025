@@ -7,7 +7,7 @@ Setup featuring:
 - ZFS (with dedup!)
 - NVIDIA Drivers (with working suspend!!!)
 - Pop! COSMIC Desktop Environment
-- Syncthing for my local files
+- Syncthing for my local files (configured imperatively)
 
 The config excludes a few files, including `users/passwords` which stores hashed password files.
 They would be theoretically safe to share if encrypted beforehand, but that's just too much headache.
