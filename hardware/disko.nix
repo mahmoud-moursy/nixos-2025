@@ -39,7 +39,7 @@
           acltype = "posixacl";
           atime = "off";
           # May paradoxically improve read speeds because I/O is usually the bottleneck
-          compression = "zstd";
+          compression = "lz4";
           mountpoint = "none";
           xattr = "sa";
         };
@@ -73,7 +73,7 @@
             mountpoint = "/nix";
             options."com.sun:auto-snapshot" = "false";
             options.dedup = "on";
-            options.compression = "zstd-9";
+            options.compression = "lz4";
             options.recordsize = "1M";
             options.checksum = "blake3";
             options.atime = "off";
