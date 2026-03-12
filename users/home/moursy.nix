@@ -9,7 +9,7 @@
     pkgs.jetbrains.datagrip
     pkgs.nixd
     pkgs.nil
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.devenv
     pkgs.keepassxc
     

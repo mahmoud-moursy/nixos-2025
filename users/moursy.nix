@@ -15,7 +15,6 @@ all@{ pkgs, inputs, ... }:
 
   programs.bash.enable = true;
   programs.fish.enable = true;
-  documentation.man.generateCaches = false; # Building is unbearably slow otherwise
 
   home-manager.users.moursy = (import ./home/moursy.nix all);
 }
