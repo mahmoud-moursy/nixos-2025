@@ -47,7 +47,6 @@
             inputs.nixos-hardware.nixosModules.asus-rog-strix-x570e
             inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             inputs.nixos-hardware.nixosModules.common-pc-ssd
-            ./hardware/realtek-rtl8125.nix
             ./hardware/nvidia.nix
             ./hardware/boot-configuration.nix
             

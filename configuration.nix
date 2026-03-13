@@ -25,10 +25,9 @@
   networking.hostId = "c8a6a27e";
 
   networking.networkmanager.enable = true;
+  networking.dhcpcd.enable = true;
   networking.enableIPv6 = true;
 
-  boot.kernel.sysctl."net.ipv6.conf.all.accept_ra" = 2;
-  boot.kernel.sysctl."net.ipv6.conf.default.accept_ra" = 2;
   
   virtualisation.containers.enable = true;
   virtualisation.docker.enable = true;
