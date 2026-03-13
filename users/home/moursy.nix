@@ -12,7 +12,8 @@
     pkgs.nixfmt
     pkgs.devenv
     pkgs.keepassxc
-    
+
+    pkgs.flatpak    
     pkgs.gnome-system-monitor
     
     pkgs.thunderbird
@@ -22,13 +23,15 @@
     pkgs.noto-fonts-cjk-serif
     pkgs.noto-fonts-color-emoji
     pkgs.unifont
-    
+
+    pkgs.xdg-dbus-proxy
+
     inputs.polypane.packages.x86_64-linux.polypane
   ];
   
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic pkgs.xdg-dbus-proxy ];
-  xdg.portal.config.common.default = "*";
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic pkgs.xdg-desktop-portal-gnome  ];
+  xdg.portal.config.common.default = [ "cosmic" "gtk" ];
   
   fonts.fontconfig.enable = true;
 
