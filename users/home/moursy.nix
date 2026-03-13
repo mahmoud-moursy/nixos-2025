@@ -31,7 +31,7 @@
   
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic pkgs.xdg-desktop-portal-gnome  ];
-  xdg.portal.config.common.default = [ "cosmic" "gtk" ];
+  xdg.portal.config.common.default = [ "xdg-desktop-portal-cosmic" "xdg-desktop-portal-gnome" "*" ];
   
   fonts.fontconfig.enable = true;
 
