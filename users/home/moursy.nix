@@ -4,13 +4,19 @@
 
   home.packages = [
     pkgs.git
+
     pkgs.zed-editor-fhs
+    pkgs.vscodium
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.datagrip
+    pkgs.jetbrains.dataspell
+
     pkgs.nixd
     pkgs.nil
     pkgs.nixfmt
+
     pkgs.devenv
+
     pkgs.keepassxc
 
     pkgs.flatpak    
@@ -30,8 +36,8 @@
   ];
   
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome  ];
-  xdg.portal.config.common.default = [ "cosmic" "gnome" "gtk" ];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
+  xdg.portal.config.common.default = [ "cosmic" "*" ];
   
   fonts.fontconfig.enable = true;
 
@@ -61,11 +67,6 @@
   programs.nh.flake = "path:/etc/nixos";
 
   services.syncthing.enable = true;
-
-  nix.settings.extra-substituters = [ "https://devenv.cachix.org" ];
-  nix.settings.extra-trusted-public-keys = [
-    "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-  ];
 
   home.stateVersion = "25.11";
 }

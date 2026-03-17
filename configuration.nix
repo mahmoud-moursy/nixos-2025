@@ -12,10 +12,13 @@
 {
   nix.package = pkgs.lixPackageSets.stable.lix;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+
+  programs.nix-ld.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

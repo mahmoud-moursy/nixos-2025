@@ -47,6 +47,7 @@
             inputs.nixos-hardware.nixosModules.asus-rog-strix-x570e
             inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             inputs.nixos-hardware.nixosModules.common-pc-ssd
+            ./hardware/razer.nix
             ./hardware/nvidia.nix
             ./hardware/boot-configuration.nix
             
