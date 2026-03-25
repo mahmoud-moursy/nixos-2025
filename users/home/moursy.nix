@@ -35,9 +35,9 @@
     inputs.polypane.packages.x86_64-linux.polypane
   ];
   
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
-  xdg.portal.config.common.default = [ "cosmic" "*" ];
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic ];
+  # xdg.portal.config.common.default = [ "cosmic" "*" ];
   
   fonts.fontconfig.enable = true;
 

@@ -48,42 +48,50 @@
   nixpkgs.config.cudaSupport = true;
   nixpkgs.config.cudaForwardCompat = true;
 
-  environment.systemPackages = 
-  (with pkgs.cudaPackages_13; [
-    cuda_cudart # → provides nvidia-cuda-runtime-cu12 + core cudart libs
-    cuda_nvrtc # → nvidia-cuda-nvrtc-cu12
-    cuda_cupti # → nvidia-cuda-cupti-cu12
-    cudnn # → nvidia-cudnn-cu12
-    nccl # → nvidia-nccl-cu12
-    libcublas # → nvidia-cublas-cu12 (this is the main one; libcublas is often just an alias or not separate)
-    libcufft # → nvidia-cufft-cu12
-    libcurand # → nvidia-curand-cu12
-    libcusolver # → nvidia-cusolver-cu12
-    libcusparse # → nvidia-cusparse-cu12
-    cuda_nvtx # → nvidia-nvtx-cu12
-    libnvjitlink # → nvidia-nvjitlink-cu12 (important for recent wheels)
-    libnvshmem
-    libcufile # → nvidia-cufile-cu12 (GPUDirect, optional)
-    libcutensor # → often useful for tensor cores / performance
-    libcusparse_lt # → nvidia-cusparselt-cu12
-  ])
-  ++ (with pkgs.cudaPackages_12; [
-    cuda_cudart # → provides nvidia-cuda-runtime-cu12 + core cudart libs
-    cuda_nvrtc # → nvidia-cuda-nvrtc-cu12
-    cuda_cupti # → nvidia-cuda-cupti-cu12
-    cudnn # → nvidia-cudnn-cu12
-    nccl # → nvidia-nccl-cu12
-    libcublas # → nvidia-cublas-cu12 (this is the main one; libcublas is often just an alias or not separate)
-    libcufft # → nvidia-cufft-cu12
-    libcurand # → nvidia-curand-cu12
-    libcusolver # → nvidia-cusolver-cu12
-    libcusparse # → nvidia-cusparse-cu12
-    cuda_nvtx # → nvidia-nvtx-cu12
-    libnvjitlink # → nvidia-nvjitlink-cu12 (important for recent wheels)
-    libnvshmem
-    libcufile # → nvidia-cufile-cu12 (GPUDirect, optional)
-    libcutensor # → often useful for tensor cores / performance
-    libcusparse_lt # → nvidia-cusparselt-cu12
-  ]);
+  programs.nix-ld.libraries = with pkgs; [
+    cudaPackages.cudatoolkit
+    cudaPackages.cudnn
+    cudaPackages.libcublas
+    cudaPackages.cuda_cudart
+    linuxPackages.nvidia_x11
+  ];
+
+  environment.systemPackages =
+    (with pkgs.cudaPackages_13; [
+      cuda_cudart # → provides nvidia-cuda-runtime-cu12 + core cudart libs
+      cuda_nvrtc # → nvidia-cuda-nvrtc-cu12
+      cuda_cupti # → nvidia-cuda-cupti-cu12
+      cudnn # → nvidia-cudnn-cu12
+      nccl # → nvidia-nccl-cu12
+      libcublas # → nvidia-cublas-cu12 (this is the main one; libcublas is often just an alias or not separate)
+      libcufft # → nvidia-cufft-cu12
+      libcurand # → nvidia-curand-cu12
+      libcusolver # → nvidia-cusolver-cu12
+      libcusparse # → nvidia-cusparse-cu12
+      cuda_nvtx # → nvidia-nvtx-cu12
+      libnvjitlink # → nvidia-nvjitlink-cu12 (important for recent wheels)
+      libnvshmem
+      libcufile # → nvidia-cufile-cu12 (GPUDirect, optional)
+      libcutensor # → often useful for tensor cores / performance
+      libcusparse_lt # → nvidia-cusparselt-cu12
+    ])
+    ++ (with pkgs.cudaPackages_12; [
+      cuda_cudart # → provides nvidia-cuda-runtime-cu12 + core cudart libs
+      cuda_nvrtc # → nvidia-cuda-nvrtc-cu12
+      cuda_cupti # → nvidia-cuda-cupti-cu12
+      cudnn # → nvidia-cudnn-cu12
+      nccl # → nvidia-nccl-cu12
+      libcublas # → nvidia-cublas-cu12 (this is the main one; libcublas is often just an alias or not separate)
+      libcufft # → nvidia-cufft-cu12
+      libcurand # → nvidia-curand-cu12
+      libcusolver # → nvidia-cusolver-cu12
+      libcusparse # → nvidia-cusparse-cu12
+      cuda_nvtx # → nvidia-nvtx-cu12
+      libnvjitlink # → nvidia-nvjitlink-cu12 (important for recent wheels)
+      libnvshmem
+      libcufile # → nvidia-cufile-cu12 (GPUDirect, optional)
+      libcutensor # → often useful for tensor cores / performance
+      libcusparse_lt # → nvidia-cusparselt-cu12
+    ]);
   environment.variables.CUDA_PATH = "${pkgs.cudaPackages_13.cudatoolkit}";
 }

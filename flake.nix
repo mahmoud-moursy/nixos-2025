@@ -2,8 +2,9 @@
   description = "Root system config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+        
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
@@ -41,6 +42,8 @@
         moursy-nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            inputs.determinate.nixosModules.default
+            
             ./configuration.nix
             ./software/steam.nix
 

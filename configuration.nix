@@ -10,7 +10,6 @@
 }:
 
 {
-  nix.package = pkgs.lixPackageSets.stable.lix;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
   nix.settings.experimental-features = [
@@ -19,6 +18,15 @@
   ];
 
   programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+    zlib
+    libGL
+    glib
+    ncurses
+    openssl
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -31,7 +39,6 @@
   networking.dhcpcd.enable = true;
   networking.enableIPv6 = true;
 
-  
   virtualisation.containers.enable = true;
   virtualisation.docker.enable = true;
 
@@ -79,13 +86,14 @@
     extraConfig.pipewire = {
       context.properties = {
         #defautlt.allowed-rates = [ 192000 48000 44100 ];
-        defautlt.allowed-rates = [
+        defautlt.clock.allowed-rates = [
           384000
           192000
           96000
           48000
           44100
         ];
+        default.clock.rate = 384000;
         default.clock.quantum = 32;
         default.clock.min-quantum = 32;
         default.clock.max-quantum = 32;
@@ -143,7 +151,10 @@
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedUDPPorts = [ 546 547 ];
+  networking.firewall.allowedUDPPorts = [
+    546
+    547
+  ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 

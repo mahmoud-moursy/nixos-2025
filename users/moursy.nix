@@ -9,6 +9,7 @@ all@{ pkgs, inputs, ... }:
       "wheel"
       "networkmanager"
       "docker"
+      "openrazer"
     ]; 
     shell = pkgs.fish;
   };
