@@ -102,11 +102,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782749631,
-        "narHash": "sha256-slFTUgDy0KTPA4LBAmC/9SngDq8GCPdX+ZR0yQHHN1E=",
+        "lastModified": 1783024095,
+        "narHash": "sha256-oE+TNK98Pl7nHW4VU1oBvUKD5JR45U+py/NJmLoTNHI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5d72a29fc36ac21adae6ae35568fe5ee6700850f",
+        "rev": "a4d410db95a6416d1008049330bd86b85b5db45a",
         "type": "github"
       },
       "original": {
@@ -251,11 +251,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782819329,
-        "narHash": "sha256-40jVJnhGj/Mwb//zInHWPamsOT62wczAwLBY0PcF15A=",
+        "lastModified": 1783025151,
+        "narHash": "sha256-OgwhCmdiSxlm3ry8vC6n0/QOHS/0UQiEWROWF9MyT7I=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "992b2f70b903e0a411fbf2225f795b969ae016e6",
+        "rev": "1ef8b1ea253b477b2e4f25a93e8dbb4b9f08f695",
         "type": "github"
       },
       "original": {
@@ -296,6 +296,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
+        "service-passwords": "service-passwords",
         "user-passwords": "user-passwords"
       }
     },
@@ -319,6 +320,18 @@
         "repo": "rust-overlay",
         "type": "github"
       }
+    },
+    "service-passwords": {
+      "flake": false,
+      "locked": {
+        "path": "services/passwords",
+        "type": "path"
+      },
+      "original": {
+        "path": "services/passwords",
+        "type": "path"
+      },
+      "parent": []
     },
     "user-passwords": {
       "flake": false,
