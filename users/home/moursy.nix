@@ -70,7 +70,5 @@
   programs.nh.clean.extraArgs = "--keep-since 4d";
   programs.nh.flake = "path:/etc/nixos";
 
-  services.syncthing.enable = true;
-
   home.stateVersion = "25.11";
 }

@@ -32,9 +32,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "moursy-nixos"; # Define your hostname.
-  networking.hostId = "c8a6a27e";
-
   networking.networkmanager.enable = true;
   networking.dhcpcd.enable = true;
 
@@ -139,26 +136,6 @@
   security.rtkit.enable = true;
   security.polkit.enable = true;
   security.tpm2.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.hostKeys = [
-    {
-      path = "/persist/ssh/ssh_host_ed25519_key";
-      type = "ed25519";
-    }
-    {
-      path = "/persist/ssh/ssh_host_rsa_key";
-      type = "rsa";
-      bits = 4096;
-    }
-  ];
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

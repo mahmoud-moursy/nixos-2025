@@ -23,6 +23,11 @@
       url = "path:users/passwords";
       flake = false;
     };
+
+    service-passwords = {
+      url = "path:services/passwords";
+      flake = false;
+    };
   };
 
   outputs =
@@ -33,30 +38,67 @@
     }:
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      nixosConfigurations.moursy-nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.moursy-x570 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          {
+            networking.hostName = "moursy-x570";
+            networking.hostId = "c8a6a27e";
+          }
+
           ./configuration.nix
           ./software/steam.nix
 
-          inputs.nixos-hardware.nixosModules.asus-rog-strix-x570e
-          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          inputs.nixos-hardware.nixosModules.common-pc-ssd
-          ./hardware/razer.nix
-          ./hardware/nvidia.nix
-          ./hardware/boot-configuration.nix
-
-          inputs.lanzaboote.nixosModules.lanzaboote
-          ./hardware/lanzaboote.nix
+          ./services/openssh
+          ./services/avahi
 
           home-manager.nixosModules.home-manager
           ./users
 
-          inputs.impermanence.nixosModules.impermanence
-          ./impermanence.nix
-
+          inputs.nixos-hardware.nixosModules.asus-rog-strix-x570e
+          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          inputs.nixos-hardware.nixosModules.common-pc-ssd
+          inputs.lanzaboote.nixosModules.lanzaboote
           inputs.disko.nixosModules.disko
-          ./hardware/disko.nix
+          inputs.impermanence.nixosModules.impermanence
+
+          ./hardware/x570/razer.nix
+          ./hardware/x570/nvidia.nix
+          ./hardware/x570/boot-configuration.nix
+          ./hardware/x570/lanzaboote.nix
+          ./hardware/x570/disko.nix
+          ./hardware/x570/impermanence.nix
+        ];
+
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+
+      nixosConfigurations.moursy-alienware = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            networking.hostName = "moursy-alienware";
+            networking.hostId = "69567190";
+          }
+
+          ./configuration.nix
+
+          ./services/insomnia.nix
+
+          ./services/openssh
+          ./services/openssh/allow-login.nix
+
+          ./services/avahi
+          ./services/avahi/publish.nix
+
+          home-manager.nixosModules.home-manager
+          ./users
+
+          ./hardware/alienware/boot-configuration.nix
+          ./hardware/alienware/nvidia.nix
+          ./hardware/alienware/disks.nix
         ];
 
         specialArgs = {

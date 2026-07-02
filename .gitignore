@@ -1,3 +1,4 @@
 *secret*
 !secrets.example.nix
 users/passwords/
+services/passwords/
