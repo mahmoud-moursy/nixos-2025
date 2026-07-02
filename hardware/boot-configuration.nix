@@ -14,6 +14,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
+
+  boot.initrd.systemd.enable = true;  
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
@@ -24,7 +28,7 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "ntsync" ];
   boot.extraModulePackages = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

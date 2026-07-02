@@ -5,11 +5,12 @@
   home.packages = [
     pkgs.git
 
-    pkgs.zed-editor-fhs
-    pkgs.vscodium
+    # pkgs.zed-editor-fhs
+    pkgs.vscode
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.dataspell
+    pkgs.jetbrains.idea
 
     pkgs.nixd
     pkgs.nil
@@ -32,7 +33,12 @@
 
     pkgs.xdg-dbus-proxy
 
-    inputs.polypane.packages.x86_64-linux.polypane
+    (pkgs.vivaldi.override {
+      proprietaryCodecs = true;
+      enableWidevine = true;
+    })
+
+    pkgs.prismlauncher
   ];
   
   # xdg.portal.enable = true;
@@ -49,8 +55,6 @@
       init.defaultBranch = "main";
     };
   };
-
-  programs.vivaldi.enable = true;
 
   programs.direnv.enable = true;
   programs.zoxide.enable = true;

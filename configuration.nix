@@ -37,8 +37,11 @@
 
   networking.networkmanager.enable = true;
   networking.dhcpcd.enable = true;
-  networking.enableIPv6 = true;
 
+  networking.enableIPv6 = true;
+  boot.kernel.sysctl."net.ipv6.conf.all.accept_ra" = 2;
+  boot.kernel.sysctl."net.ipv6.conf.default.accept_ra" = 2;
+  
   virtualisation.containers.enable = true;
   virtualisation.docker.enable = true;
 
@@ -59,14 +62,15 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-cosmic pkgs.xdg-desktop-portal-gtk ];
   services.flatpak.enable = true;
 
-  # System76's scheduler can be more performant with COSMIC
-  services.system76-scheduler.enable = true;
-  # Enable the COSMIC Environment.
+  # Enable COSMIC
   services.displayManager.cosmic-greeter.enable = true;
   services.desktopManager.cosmic.enable = true;
-
+  services.system76-scheduler.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -83,6 +87,7 @@
     jack.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    wireplumber.enable = true;
     extraConfig.pipewire = {
       context.properties = {
         #defautlt.allowed-rates = [ 192000 48000 44100 ];
@@ -149,14 +154,20 @@
     }
   ];
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  networking.firewall.allowedUDPPorts = [
-    546
-    547
-  ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
+  # networking.firewall.allowedUDPPorts = [
+  #   546
+  #   547
+  # ];
+  # # Or disable the firewall altogether.
+  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

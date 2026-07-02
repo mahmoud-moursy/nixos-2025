@@ -17,5 +17,6 @@ all@{ pkgs, inputs, ... }:
   programs.bash.enable = true;
   programs.fish.enable = true;
 
+
   home-manager.users.moursy = (import ./home/moursy.nix all);
 }
