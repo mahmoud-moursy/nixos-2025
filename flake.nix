@@ -51,6 +51,7 @@
 
           ./services/openssh
           ./services/avahi
+          ./services/syncthing
 
           home-manager.nixosModules.home-manager
           ./users
@@ -92,6 +93,9 @@
 
           ./services/avahi
           ./services/avahi/publish.nix
+
+          ./services/syncthing
+          ./services/syncthing/allow-remote.nix
 
           home-manager.nixosModules.home-manager
           ./users
