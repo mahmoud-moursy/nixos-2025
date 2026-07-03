@@ -143,6 +143,7 @@
   #   546
   #   547
   # ];
+  networking.nftables.enable = true;
   networking.firewall.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
