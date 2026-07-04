@@ -86,6 +86,7 @@
 
           ./configuration.nix
 
+          ./services/allow-local.nix
           ./services/insomnia.nix
 
           ./services/openssh
