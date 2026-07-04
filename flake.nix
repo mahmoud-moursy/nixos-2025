@@ -41,12 +41,9 @@
       nixosConfigurations.moursy-x570 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          {
-            networking.hostName = "moursy-x570";
-            networking.hostId = "c8a6a27e";
-          }
-
           ./configuration.nix
+          ./desktops/cosmic.nix
+
           ./software/steam.nix
 
           ./services/openssh
@@ -69,6 +66,7 @@
           ./hardware/x570/lanzaboote.nix
           ./hardware/x570/disko.nix
           ./hardware/x570/impermanence.nix
+          ./hardware/x570/network.nix
         ];
 
         specialArgs = {
@@ -79,11 +77,6 @@
       nixosConfigurations.moursy-alienware = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          {
-            networking.hostName = "moursy-alienware";
-            networking.hostId = "69567190";
-          }
-
           ./configuration.nix
 
           ./services/allow-local.nix
@@ -104,6 +97,7 @@
           ./hardware/alienware/boot-configuration.nix
           ./hardware/alienware/nvidia.nix
           ./hardware/alienware/disks.nix
+          ./hardware/alienware/network.nix
         ];
 
         specialArgs = {
