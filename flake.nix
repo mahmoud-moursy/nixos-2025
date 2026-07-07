@@ -2,7 +2,7 @@
   description = "Root system config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -91,6 +91,8 @@
 
           ./services/avahi
           ./services/avahi/publish.nix
+
+          ./services/karakeep
 
           ./services/syncthing
           ./services/syncthing/allow-remote.nix
