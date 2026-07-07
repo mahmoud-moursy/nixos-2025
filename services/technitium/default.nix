@@ -50,7 +50,9 @@
 
   services.caddy.virtualHosts."local.moursy.org" = {
     extraConfig = ''
-      handle_path /technitium* {
+      redir /technitium /technitium/ 308
+      
+      handle_path /technitium/* {
         reverse_proxy 127.0.0.1:5380
       }
     '';
