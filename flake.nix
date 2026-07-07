@@ -82,6 +82,10 @@
           ./services/allow-local.nix
           ./services/insomnia.nix
 
+          ./services/caddy
+          
+          ./services/technitium
+
           ./services/openssh
           ./services/openssh/allow-login.nix
 
@@ -90,6 +94,8 @@
 
           ./services/syncthing
           ./services/syncthing/allow-remote.nix
+
+          ./services/vaultwarden
 
           home-manager.nixosModules.home-manager
           ./users

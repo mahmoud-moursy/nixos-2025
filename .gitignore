@@ -1,4 +1,5 @@
 *secret*
-!secrets.example.nix
+*password*
+*.env*
 users/passwords/
 services/passwords/
