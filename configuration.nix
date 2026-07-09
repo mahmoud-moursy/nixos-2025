@@ -40,12 +40,7 @@
   boot.kernel.sysctl."net.ipv6.conf.default.accept_ra" = 2;
   
   virtualisation.containers.enable = true;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
-
+  virtualisation.podman.enable = true;
   # Set your time zone.
   time.timeZone = "Asia/Dubai";
 

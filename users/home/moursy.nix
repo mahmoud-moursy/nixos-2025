@@ -4,6 +4,8 @@
 
   home.packages = [
     pkgs.git
+    pkgs.gh
+    
     pkgs.nixd
     pkgs.nil
     pkgs.nixfmt

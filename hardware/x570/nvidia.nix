@@ -15,6 +15,8 @@
   hardware.nvidia.powerManagement.finegrained = false;
   hardware.nvidia-container-toolkit.enable = true;
 
+  virtualisation.podman.enableNvidia = true;
+
   boot.kernelParams = [
     "mem_sleep_default=deep"
     "nvidia.NVreg_UsePageAttributeTable=1"
