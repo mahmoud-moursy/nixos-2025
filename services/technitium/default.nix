@@ -48,7 +48,7 @@
     };
 
 
-  services.caddy.virtualHosts."local.moursy.org" = {
+  services.caddy.virtualHosts."lan.moursy.org" = {
     extraConfig = ''
       redir /technitium /technitium/ 308
       

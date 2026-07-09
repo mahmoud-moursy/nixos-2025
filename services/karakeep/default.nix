@@ -2,10 +2,10 @@
   services.karakeep.enable = true;
   services.karakeep.extraEnvironment = {
     PORT = "3000";
-    NEXTAUTH_URL = "https://local.moursy.org/karakeep/";
+    NEXTAUTH_URL = "https://lan.moursy.org/karakeep/";
     NEXTAUTH_SECRET = lib.fileContents "${inputs.service-passwords}/karakeep-secret.password";
   };
-  services.caddy.virtualHosts."local.moursy.org" = {
+  services.caddy.virtualHosts."lan.moursy.org" = {
     extraConfig = ''
         redir /karakeep /karakeep/
 

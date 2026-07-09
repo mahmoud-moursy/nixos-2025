@@ -2,13 +2,13 @@
   services.vaultwarden = {
     enable = true;
     config = {
-      DOMAIN="https://local.moursy.org/vaultwarden/";
+      DOMAIN="https://lan.moursy.org/vaultwarden/";
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 8222;   
     };
   };
 
-  services.caddy.virtualHosts."local.moursy.org" = {
+  services.caddy.virtualHosts."lan.moursy.org" = {
     extraConfig = ''
       redir /vaultwarden /vaultwarden/ 308
       

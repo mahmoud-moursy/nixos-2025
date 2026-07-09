@@ -1,24 +1,22 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, config, ... }:
 {
   imports = [ ];
 
   home.packages = [
     pkgs.git
+    pkgs.nixd
+    pkgs.nil
+    pkgs.nixfmt
 
+    pkgs.devenv
+  ] ++ lib.optionals config.services.xserver.enable [
+    
     # pkgs.zed-editor-fhs
     pkgs.vscode
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.dataspell
     pkgs.jetbrains.idea
-
-    pkgs.nixd
-    pkgs.nil
-    pkgs.nixfmt
-
-    pkgs.devenv
-
-    pkgs.keepassxc
 
     pkgs.flatpak    
     pkgs.gnome-system-monitor
@@ -39,6 +37,7 @@
     })
 
     pkgs.prismlauncher
+
   ];
   
   # xdg.portal.enable = true;
@@ -50,7 +49,7 @@
   programs.git.enable = true;
   programs.git = {
     settings = {
-      user.email = "bageliq@protonmail.com";
+      user.email = "business.mahmoud.m@icloud.com";
       user.name = "Mahmoud Moursy";
       init.defaultBranch = "main";
     };

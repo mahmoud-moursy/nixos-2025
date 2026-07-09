@@ -4,7 +4,7 @@
     openDefaultPorts = false;
   };
 
-  services.caddy.virtualHosts."local.moursy.org" = {
+  services.caddy.virtualHosts."lan.moursy.org" = {
     extraConfig = ''
       redir /syncything /syncthing/ 308
       

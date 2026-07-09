@@ -92,8 +92,6 @@
           ./services/avahi
           ./services/avahi/publish.nix
 
-          # ./services/karakeep
-
           ./services/syncthing
           ./services/syncthing/allow-remote.nix
 
