@@ -2,10 +2,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-cosmic
-    pkgs.xdg-desktop-portal-gtk
-  ];
+  # xdg.portal.extraPortals = [
+  #   pkgs.xdg-desktop-portal-cosmic
+  #   pkgs.xdg-desktop-portal-gtk
+  # ];
   services.flatpak.enable = true;
 
   # Enable COSMIC

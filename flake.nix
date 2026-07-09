@@ -42,6 +42,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+
           ./desktops/cosmic.nix
 
           ./software/steam.nix

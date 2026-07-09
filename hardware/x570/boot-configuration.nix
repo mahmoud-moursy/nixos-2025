@@ -11,7 +11,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.supportedFilesystems = [ "zfs" "ntfs" ];
 
   boot.initrd.systemd.enable = true;  
