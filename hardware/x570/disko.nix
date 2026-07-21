@@ -41,7 +41,7 @@
           acltype = "posixacl";
           atime = "off";
           # May paradoxically improve read speeds because I/O is usually the bottleneck
-          compression = "lz4";
+          compression = "zstd-9";
           mountpoint = "none";
           xattr = "sa";
         };

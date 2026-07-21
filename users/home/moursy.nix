@@ -10,36 +10,22 @@
     pkgs.nil
     pkgs.nixfmt
 
-    pkgs.devenv
+    pkgs.deploy-rs
   ] ++ lib.optionals config.services.xserver.enable [
-    
-    # pkgs.zed-editor-fhs
-    pkgs.vscode
+    pkgs.zed-editor-fhs
+
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.dataspell
     pkgs.jetbrains.idea
 
-    pkgs.flatpak    
     pkgs.gnome-system-monitor
-    
-    pkgs.thunderbird
     
     pkgs.noto-fonts
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
     pkgs.noto-fonts-color-emoji
     pkgs.unifont
-
-    pkgs.xdg-dbus-proxy
-
-    (pkgs.vivaldi.override {
-      proprietaryCodecs = true;
-      enableWidevine = true;
-    })
-
-    pkgs.prismlauncher
-
   ];
   
   # xdg.portal.enable = true;
@@ -57,6 +43,9 @@
     };
   };
 
+  programs.devenv.enable = true;
+  programs.devenv.enableFishIntegration = true;
+  
   programs.direnv.enable = true;
   programs.zoxide.enable = true;
 

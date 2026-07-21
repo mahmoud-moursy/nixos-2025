@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    deploy-rs.url = "github:serokell/deploy-rs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +35,8 @@
     inputs@{
       nixpkgs,
       home-manager,
+      deploy-rs,
+      self,
       ...
     }:
     {
@@ -61,6 +64,7 @@
           inputs.disko.nixosModules.disko
           inputs.impermanence.nixosModules.impermanence
 
+          ./hardware/x570/audio.nix
           ./hardware/x570/razer.nix
           ./hardware/x570/nvidia.nix
           ./hardware/x570/boot-configuration.nix
@@ -109,6 +113,17 @@
 
         specialArgs = {
           inherit inputs;
+        };
+      };
+
+      deploy.nodes.moursy-alienware = {
+        hostname = "moursy-alienware.local";
+
+        profiles.system = {
+          user = "root";
+          sshUser = "moursy";
+          interactiveSudo = true;
+          path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.moursy-alienware;
         };
       };
     };
